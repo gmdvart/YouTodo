@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">YouTodo</string>
+    <string name="create_todo">Create Todo</string>
+    <string name="edit_todo">Edit Todo</string>
+    <string name="todo_hint">Enter Title</string>
+    <string name="error_message">Todo can not be empty!</string>
+    <string name="add">Add</string>
+    <string name="cancel">Cancel</string>
+
+    <string name="delete_warning">Are you sure?</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+
+    <string name="delete">Delete</string>
+    <string name="edit">Edit</string>
+
+    <string name="todos_empty">You have not what Todo yet</string>
+</resources>
