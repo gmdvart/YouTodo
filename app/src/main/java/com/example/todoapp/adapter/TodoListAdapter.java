@@ -16,9 +16,6 @@ import org.jetbrains.annotations.NotNull;
 public class TodoListAdapter extends ListAdapter<TodoModel, TodoListAdapter.TodoViewHolder> {
     static class TodoViewHolder extends RecyclerView.ViewHolder {
         private final TodoListItemBinding binding;
-        public final TodoListItemBinding getBinding() {
-            return binding;
-        }
         TodoViewHolder(TodoListItemBinding binding) {
             super(binding.getRoot());
             this.binding = binding;

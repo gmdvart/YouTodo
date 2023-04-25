@@ -2,9 +2,7 @@ package com.example.todoapp.ui;
 
 import android.content.DialogInterface;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.MenuItem;
-import android.widget.CheckBox;
 import android.widget.PopupMenu;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
@@ -12,12 +10,11 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import androidx.lifecycle.Observer;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import com.example.todoapp.R;
 import com.example.todoapp.TodoApplication;
-import com.example.todoapp.TodoConstants;
+import com.example.todoapp.constants.TodoConstants;
 import com.example.todoapp.adapter.TodoListAdapter;
 import com.example.todoapp.data.database.Todo;
 import com.example.todoapp.databinding.FragmentTodoBinding;
@@ -25,8 +22,6 @@ import com.example.todoapp.model.TodoModel;
 import com.example.todoapp.viewmodel.TodoViewModel;
 import com.google.gson.Gson;
 import org.jetbrains.annotations.NotNull;
-
-import java.util.List;
 
 public class TodoFragment extends Fragment implements PopupMenu.OnMenuItemClickListener {
     private FragmentTodoBinding binding;
@@ -48,6 +43,9 @@ public class TodoFragment extends Fragment implements PopupMenu.OnMenuItemClickL
     public void onViewCreated(@NotNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        binding.setViewModel(viewModel);
+        binding.setLifecycleOwner(getViewLifecycleOwner());
+
         RecyclerView todoRecyclerView = binding.todoRecyclerView;
         todoRecyclerView.setLayoutManager(new LinearLayoutManager(requireContext()));
         TodoListAdapter adapter = new TodoListAdapter(new TodoListAdapter.OnTodoClickListener() {
@@ -62,13 +60,6 @@ public class TodoFragment extends Fragment implements PopupMenu.OnMenuItemClickL
             }
         });
         todoRecyclerView.setAdapter(adapter);
-
-        viewModel.getAllTodos().observe(this.getViewLifecycleOwner(), new Observer<List<TodoModel>>() {
-            @Override
-            public void onChanged(List<TodoModel> todos) {
-                adapter.submitList(todos);
-            }
-        });
     }
 
     private void showPopupMenu(View view) {

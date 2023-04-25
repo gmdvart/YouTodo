@@ -6,24 +6,25 @@ import androidx.annotation.Nullable;
 import androidx.databinding.BindingAdapter;
 import androidx.recyclerview.widget.RecyclerView;
 import com.example.todoapp.adapter.TodoListAdapter;
+import com.example.todoapp.constants.AnimatorConstants;
+import com.example.todoapp.animations.CrossfadeAnimator;
 import com.example.todoapp.model.TodoModel;
 
 import java.util.List;
 
 public final class BindingsAdapters {
-    @BindingAdapter("itemList")
-    public void bindRecyclerView(RecyclerView recyclerView, @Nullable List<TodoModel> todos) {
+    @BindingAdapter({"app:itemList"})
+    public static void bindItemList(RecyclerView recyclerView, @Nullable List<TodoModel> todos) {
         TodoListAdapter adapter = (TodoListAdapter) recyclerView.getAdapter();
         if (adapter != null && todos != null) {
-                adapter.submitList(todos);
+            adapter.submitList(todos);
         }
     }
 
-    @BindingAdapter("emptyText")
-    public void bindEmptyText(TextView textView, int todoSize) {
-        if (todoSize == 0) {
-            textView.setVisibility(View.VISIBLE);
-            textView.setText(R.string.todos_empty);
+    @BindingAdapter({"app:textDisappearOnValue"})
+    public static void bindEmptyText(TextView textView, int todos) {
+        if (todos == 0) {
+            CrossfadeAnimator.fadeIn(textView, AnimatorConstants.FADE_IN_ANIM_VALUE);
         } else {
             textView.setVisibility(View.GONE);
         }

@@ -1,4 +1,4 @@
-package com.example.todoapp;
+package com.example.todoapp.constants;
 
 final public class TodoConstants {
     public static final String KEY_DIALOG_TITLE = "dialog_title";
