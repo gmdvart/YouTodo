@@ -1,4 +1,4 @@
-package com.example.todoapp;
+package com.example.todoapp.utils;
 
 import android.view.View;
 import android.widget.TextView;
@@ -18,15 +18,6 @@ public final class BindingsAdapters {
         TodoListAdapter adapter = (TodoListAdapter) recyclerView.getAdapter();
         if (adapter != null && todos != null) {
             adapter.submitList(todos);
-        }
-    }
-
-    @BindingAdapter({"app:textDisappearOnValue"})
-    public static void bindEmptyText(TextView textView, int todos) {
-        if (todos == 0) {
-            CrossfadeAnimator.fadeIn(textView, AnimatorConstants.FADE_IN_ANIM_VALUE);
-        } else {
-            textView.setVisibility(View.GONE);
         }
     }
 }

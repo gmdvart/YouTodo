@@ -14,7 +14,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import com.example.todoapp.R;
 import com.example.todoapp.TodoApplication;
-import com.example.todoapp.constants.TodoConstants;
+import com.example.todoapp.constants.TodoTransactionConstants;
 import com.example.todoapp.adapter.TodoListAdapter;
 import com.example.todoapp.data.database.Todo;
 import com.example.todoapp.databinding.FragmentTodoBinding;
@@ -46,7 +46,7 @@ public class TodoFragment extends Fragment implements PopupMenu.OnMenuItemClickL
         binding.setViewModel(viewModel);
         binding.setLifecycleOwner(getViewLifecycleOwner());
 
-        RecyclerView todoRecyclerView = binding.todoRecyclerView;
+        RecyclerView todoRecyclerView = binding.recyclerView;
         todoRecyclerView.setLayoutManager(new LinearLayoutManager(requireContext()));
         TodoListAdapter adapter = new TodoListAdapter(new TodoListAdapter.OnTodoClickListener() {
             @Override
@@ -74,9 +74,9 @@ public class TodoFragment extends Fragment implements PopupMenu.OnMenuItemClickL
         String todo = gson.toJson(longClickedTodo);
 
         Bundle transactionData = new Bundle();
-        transactionData.putString(TodoConstants.KEY_DIALOG_TITLE, getString(R.string.edit_todo));
-        transactionData.putString(TodoConstants.KEY_DIALOG_POSITIVE_TEXT, getString(R.string.edit));
-        transactionData.putString(TodoConstants.KEY_DIALOG_TODO, todo);
+        transactionData.putString(TodoTransactionConstants.KEY_DIALOG_TITLE, getString(R.string.edit_todo));
+        transactionData.putString(TodoTransactionConstants.KEY_DIALOG_POSITIVE_TEXT, getString(R.string.edit));
+        transactionData.putString(TodoTransactionConstants.KEY_DIALOG_TODO, todo);
 
         TodoAddDialog dialog = new TodoAddDialog();
         dialog.setArguments(transactionData);

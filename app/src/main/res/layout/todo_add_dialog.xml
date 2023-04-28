@@ -10,18 +10,17 @@
             android:id="@+id/todo_text_field"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="textPersonName"
-            android:singleLine="true"
             android:hint="@string/todo_hint"
-            app:errorIconDrawable="@drawable/ic_error"
-            app:helperTextTextAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            style="@style/Widget.Todo.TextInputLayout.OutlinedTextBox"
             app:layout_constraintTop_toTopOf="parent">
 
         <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/todo_input"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:inputType="textPersonName"
+                android:singleLine="true"
+                android:maxLines="1"
                 android:autofillHints="false"/>
     </com.google.android.material.textfield.TextInputLayout>
 

@@ -8,7 +8,7 @@ import android.view.View;
 import androidx.fragment.app.DialogFragment;
 import com.example.todoapp.R;
 import com.example.todoapp.TodoApplication;
-import com.example.todoapp.constants.TodoConstants;
+import com.example.todoapp.constants.TodoTransactionConstants;
 import com.example.todoapp.data.database.Todo;
 import com.example.todoapp.databinding.TodoAddDialogBinding;
 import com.example.todoapp.model.TodoModel;
@@ -36,11 +36,11 @@ public class TodoAddDialog extends DialogFragment {
         String dialogTitle = getString(R.string.create_todo);
         String positiveButtonText = getString(R.string.add);
         if (getArguments() != null) {
-            dialogTitle = getArguments().getString(TodoConstants.KEY_DIALOG_TITLE);
-            positiveButtonText = getArguments().getString(TodoConstants.KEY_DIALOG_POSITIVE_TEXT);
+            dialogTitle = getArguments().getString(TodoTransactionConstants.KEY_DIALOG_TITLE);
+            positiveButtonText = getArguments().getString(TodoTransactionConstants.KEY_DIALOG_POSITIVE_TEXT);
 
             Gson gson = new Gson();
-            capturedTodo = gson.fromJson(getArguments().getString(TodoConstants.KEY_DIALOG_TODO), TodoModel.class);
+            capturedTodo = gson.fromJson(getArguments().getString(TodoTransactionConstants.KEY_DIALOG_TODO), TodoModel.class);
             binding.todoInput.setText(capturedTodo.getTitle());
         }
 
